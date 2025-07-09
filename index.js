@@ -118,4 +118,4 @@ client.on('messageCreate', async (message) => {
 });
 
 // 🛡️ Token do bot (substitua pela sua chave real)
-client.login('MTM4OTM1MDM0ODM3OTkxNDM2Mg.GkdFP2.-csOrz1C5_rOyg6fxmDWqDvfLA5SnpKuLobp3s');
+client.login('MTM4OTM1MDM0ODM3OTkxNDM2Mg.GONgr5.hFFdAb7NoPPrgoqdYDMhPoyKR-cEtgIhSPrjCM');

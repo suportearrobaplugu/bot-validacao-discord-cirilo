@@ -13,6 +13,7 @@ app.listen(3000, () => console.log('Servidor express ativo na porta 3000'));
 // 📋 Carregar credenciais da conta de serviço
 const { GoogleAuth } = require('google-auth-library');
 const credentials = JSON.parse(process.env.GOOGLE_CREDENTIALS_JSON);
+console.log('[DEBUG] Primeiros caracteres da variável GOOGLE_CREDENTIALS_JSON:', process.env.GOOGLE_CREDENTIALS_JSON?.slice(0, 100));
 
 const auth = new GoogleAuth({
   credentials,

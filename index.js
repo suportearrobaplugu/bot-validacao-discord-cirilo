@@ -25,7 +25,7 @@ let emailsPermitidos = [];
 cron.schedule('* * * * *', async () => {
   try {
     const res = await sheets.spreadsheets.values.get({
-      spreadsheetId: '1FPoGtMZ0y9ncX0AQWxsJatxNPzaCXpd36L2jFD8xUVI',
+      spreadsheetId: process.env.GOOGLE_SHEET_ID,
       range: 'ALUNOS!C:C'
     });
     const valores = res.data.values || [];
@@ -78,4 +78,4 @@ client.on('messageCreate', async (message) => {
 });
 
 // 🛡️ Token do bot (substitua pela sua chave real)
-client.login('MTM4OTM1MDM0ODM3OTkxNDM2Mg.GYNgU5.yiHgU1Q8lD4qzdZtlB5PiAuDg9iQ9mKjWP10LU');
+client.login(process.env.DISCORD_TOKEN);

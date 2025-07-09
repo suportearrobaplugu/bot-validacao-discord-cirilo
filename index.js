@@ -12,7 +12,7 @@ app.listen(3000, () => console.log('Servidor express ativo na porta 3000'));
 
 // 📋 Carregar credenciais da conta de serviço
 const auth = new google.auth.GoogleAuth({
-  credentials: JSON.parse(fs.readFileSync('credentials.json')), // <- salve o .json como 'credentials.json' no Replit
+  credentials: JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT), // <- salve o .json como 'credentials.json' no Replit
   scopes: ['https://www.googleapis.com/auth/spreadsheets.readonly']
 });
 

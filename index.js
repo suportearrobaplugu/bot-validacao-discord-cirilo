@@ -11,7 +11,7 @@ app.get('/', (req, res) => res.send('Bot rodando!'));
 app.listen(3000, () => console.log('Servidor express ativo na porta 3000'));
 
 // 📋 Carregar credenciais da conta de serviço
-const credentials = require('./credentials.json');
+const credentials = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT);
 
 const auth = new google.auth.JWT(
   credentials.client_email,

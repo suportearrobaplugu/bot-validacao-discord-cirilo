@@ -11,14 +11,13 @@ app.get('/', (req, res) => res.send('Bot rodando!'));
 app.listen(3000, () => console.log('Servidor express ativo na porta 3000'));
 
 // 📋 Carregar credenciais da conta de serviço
-const credentials = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT);
+const { GoogleAuth } = require('google-auth-library');
+const credentials = JSON.parse(process.env.GOOGLE_CREDENTIALS_JSON);
 
-const auth = new google.auth.JWT(
-  credentials.client_email,
-  null,
-  credentials.private_key,
-  ['https://www.googleapis.com/auth/spreadsheets.readonly']
-);
+const auth = new GoogleAuth({
+  credentials,
+  scopes: ['https://www.googleapis.com/auth/spreadsheets.readonly'],
+});
 
 const sheets = google.sheets({ version: 'v4', auth });
 

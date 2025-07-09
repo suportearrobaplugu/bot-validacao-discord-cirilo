@@ -2,20 +2,20 @@
 const express = require('express');
 const { Client, GatewayIntentBits } = require('discord.js');
 const { google } = require('googleapis');
+const { GoogleAuth } = require('google-auth-library');
 const cron = require('node-cron');
 
-// 🌐 Express para manter o Railway online
+// 🌐 Express para manter o Replit online
 const app = express();
 app.get('/', (req, res) => res.send('Bot rodando!'));
 app.listen(3000, () => console.log('Servidor express ativo na porta 3000'));
 
-// 📋 Credenciais direto no código (⚠️ NÃO USE EM PRODUÇÃO PÚBLICA)
-const { GoogleAuth } = require('google-auth-library');
+// 🔐 Credenciais diretamente no código (evite em produção)
 const credentials = {
-  "type": "service_account",
-  "project_id": "bot-discord-validacao",
-  "private_key_id": "c61dd1da64e2784b2728e639ce4f8f3814782789",
-  "private_key": `-----BEGIN PRIVATE KEY-----
+  type: "service_account",
+  project_id: "bot-discord-validacao",
+  private_key_id: "c61dd1da64e2784b2728e639ce4f8f3814782789",
+  private_key: `-----BEGIN PRIVATE KEY-----
 MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCiAK5E2IWNGAmx
 JVx7RcXoHgjn2RxrNyfB+gi770xu/pVUjHjviFMWcXGL7MXgJWOoOCaMkM0xUEtG
 nLRAwcyAsc/hclAcOSV1gvoKUmpx5pAmqWAAXZsBJbD1sjoIWJYdz67yKXxU7d5E
@@ -43,13 +43,13 @@ LUC5cHvZrxacYXJnk17pPQ1ylCmOP/bmO3xPzK/SV/SS85ENnqlDlnFcRZCvFSwZ
 xf/dRe3PAdFgp4NelusswXMUKMCVFfypP+ifY9DzB61phIdG5PwsEbS21aHSNrre
 1HhJozuwd7h9m+zp5zwyylI=
 -----END PRIVATE KEY-----`,
-  "client_email": "bot-discord@bot-discord-validacao.iam.gserviceaccount.com",
-  "client_id": "118146359298173031900",
-  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-  "token_uri": "https://oauth2.googleapis.com/token",
-  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/bot-discord%40bot-discord-validacao.iam.gserviceaccount.com",
-  "universe_domain": "googleapis.com"
+  client_email: "bot-discord@bot-discord-validacao.iam.gserviceaccount.com",
+  client_id: "118146359298173031900",
+  auth_uri: "https://accounts.google.com/o/oauth2/auth",
+  token_uri: "https://oauth2.googleapis.com/token",
+  auth_provider_x509_cert_url: "https://www.googleapis.com/oauth2/v1/certs",
+  client_x509_cert_url: "https://www.googleapis.com/robot/v1/metadata/x509/bot-discord%40bot-discord-validacao.iam.gserviceaccount.com",
+  universe_domain: "googleapis.com"
 };
 
 const auth = new GoogleAuth({
@@ -66,7 +66,7 @@ let emailsPermitidos = [];
 cron.schedule('* * * * *', async () => {
   try {
     const res = await sheets.spreadsheets.values.get({
-      spreadsheetId: process.env.GOOGLE_SHEET_ID,
+      spreadsheetId: '1FPoGtMZ0y9ncX0AQWxsJatxNPzaCXpd36L2jFD8xUVI',
       range: 'ALUNOS!C:C'
     });
     const valores = res.data.values || [];
@@ -107,7 +107,6 @@ client.on('messageCreate', async (message) => {
     try {
       if (cargoAluno) await message.member.roles.add(cargoAluno);
       if (cargoVisitante) await message.member.roles.remove(cargoVisitante);
-
       message.reply('Seja Bem-vindo(a) à Comunidade!');
     } catch (err) {
       console.error('[ERRO CARGOS]', err);
@@ -118,5 +117,5 @@ client.on('messageCreate', async (message) => {
   }
 });
 
-// 🛡️ Token do bot
-client.login(process.env.DISCORD_TOKEN);
+// 🛡️ Token do bot (substitua pela sua chave real)
+client.login('MTM4OTM1MDM0ODM3OTkxNDM2Mg.GkdFP2.-csOrz1C5_rOyg6fxmDWqDvfLA5SnpKuLobp3s');

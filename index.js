@@ -4,7 +4,6 @@ const { Client, GatewayIntentBits } = require('discord.js');
 const { google } = require('googleapis');
 const { GoogleAuth } = require('google-auth-library');
 const cron = require('node-cron');
-require('dotenv').config();
 
 // 🌐 Express para manter o Replit online
 const app = express();

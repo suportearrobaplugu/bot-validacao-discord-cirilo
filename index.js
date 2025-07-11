@@ -119,4 +119,5 @@ client.on('messageCreate', async (message) => {
 });
 
 // 🛡️ Token do bot (substitua pela sua chave real)
+console.log("TOKEN LIDO:", process.env.DISCORD_TOKEN);
 client.login(process.env.DISCORD_TOKEN);

@@ -118,4 +118,4 @@ client.on('messageCreate', async (message) => {
 });
 
 // 🛡️ Token do bot (substitua pela sua chave real)
-client.login('process.env.DISCORD_TOKEN');
+client.login(process.env.DISCORD_TOKEN);
